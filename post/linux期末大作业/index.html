@@ -404,6 +404,55 @@ javac SocketClient.java
 java SocketClient
 </code></pre><p><img src="/pictures/3-6%EF%BC%882%EF%BC%89.jpg" alt="启动客户端"></p>
 <h2 id="安装并配置hugo">安装并配置Hugo</h2>
+<p><strong>1.安装Hugo</strong></p>
+<pre tabindex="0"><code>sudo apt-get install hugo
+</code></pre><p><img src="/pictures/4-1.jpg" alt="安装Hugo"><br>
+<strong>2.新建一个站点</strong></p>
+<pre tabindex="0"><code>hugo new site myblog
+</code></pre><p><img src="/pictures/4-2.jpg" alt="新建站点"><br>
+<strong>3.下载选定的主题</strong></p>
+<pre tabindex="0"><code>git clone https://github.com/yoshiharuyamashita/blackburn.git themes/blackburn
+</code></pre><p><img src="/pictures/4-3.jpg" alt="下载主题"><br>
+<strong>4.添加文章</strong></p>
+<pre tabindex="0"><code>hugo new post/Linux期末大作业.md
+</code></pre><p><img src="/pictures/4-4.jpg" alt="添加文章"><br>
+<strong>5.编辑文章</strong></p>
+<pre tabindex="0"><code>vim content/post/Linux期末大作业.md
+</code></pre><p><img src="/pictures/4-5.jpg" alt="编辑文章"><br>
+<img src="/pictures/4-5%EF%BC%881%EF%BC%89.jpg" alt="使用markdown编写网页"></p>
+<h2 id="部署到web服务器">部署到Web服务器</h2>
+<p><strong>1.安装Apache</strong></p>
+<pre tabindex="0"><code>sudo spt install apache2
+</code></pre><p><img src="/pictures/5-1.jpg" alt="安装Apache"><br>
+<strong>2.开启Apache服务器</strong></p>
+<pre tabindex="0"><code>service apache2 start
+sudo systemctl status apache2
+</code></pre><p><img src="/pictures/5-2.jpg" alt="开启Apache服务器"><br>
+<strong>3.在myblog文件夹里生成public文件</strong></p>
+<pre tabindex="0"><code>hugo
+</code></pre><p><img src="/pictures/5-3.jpg" alt="生成public文件"><br>
+<strong>4.将public文件夹里的文件复制到/var/www/html</strong></p>
+<pre tabindex="0"><code>sudo cp -r public/* /var/www/html
+</code></pre><p><img src="/pictures/5-4.jpg" alt="部署到Apache"><br>
+<strong>5.通过IP访问网站</strong><br>
+<img src="/pictures/5-5%EF%BC%881%EF%BC%89.jpg" alt="IP访问"><br>
+<img src="/pictures/5-5%EF%BC%882%EF%BC%89.jpg" alt="IP访问"></p>
+<h2 id="将网站上传到github使其可以在公网访问">将网站上传到GitHub，使其可以在公网访问</h2>
+<p><strong>1.新建一个远程仓库</strong><br>
+<img src="/pictures/6-1.jpg" alt="新建仓库"><br>
+<strong>2.连接远程仓库并上传public文件</strong></p>
+<pre tabindex="0"><code>echo &quot;# L-Y2533.github.io&quot; &gt;&gt; README.md
+git init
+git add .
+git commit -m &quot;first commit&quot;
+git branch -M main
+git remote add origin git@github.com:L-Y2533/L-Y2533.github.io.git
+git push -u origin main
+</code></pre><p><img src="/pictures/6-2.jpg" alt="上传到GitHub"><br>
+<strong>3.通过公网访问</strong></p>
+<pre tabindex="0"><code>L-Y2533.github.io
+</code></pre><p><img src="/pictures/6-3%EF%BC%881%EF%BC%89.jpg" alt="公网访问"><br>
+<img src="/pictures/6-3%EF%BC%882%EF%BC%89.jpg" alt="公网访问"></p>
 
   
   <h4><i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Share!</h4>
